@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction Processing Concepts</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background-color: #f4f4f4; }
+        header { background: #333; color: white; padding: 15px; text-align: center; font-size: 24px; }
+        nav { text-align: center; margin: 20px 0; }
+        nav a { margin: 0 15px; text-decoration: none; color: #007BFF; font-weight: bold; }
+        div { max-width: 800px; margin: auto; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
+        h2 { color: #333; border-bottom: 2px solid #007BFF; padding-bottom: 5px; }
+        ul { padding-left: 20px; }
+        footer { background: #333; color: white; text-align: center; padding: 10px; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Introduction to Transaction Processing</h1>
+    </header>
+    <nav>
+        <a href="#properties">Transaction Properties</a>
+        <a href="#recoverability">Schedules based on Recoverability</a>
+        <a href="#serializability">Schedules based on Serializability</a>
+    </nav>
+    <div>
+        <section id="properties">
+            <h2>Transaction Properties</h2>
+            <Center>
+            <img src="ACID.png" height="200" width="200">
+            </Center>
+            <p>Transactions in a database system must maintain the ACID properties:</p>
+            <ul>
+                <li><strong>Atomicity</strong> - Ensures that a transaction is either fully completed or fully rolled back.</li>
+                <li><strong>Consistency</strong> - Ensures that a database remains in a consistent state before and after a transaction.</li>
+                <li><strong>Isolation</strong> - Ensures that transactions execute independently without interference.</li>
+                <li><strong>Durability</strong> - Ensures that the effects of a committed transaction are permanently stored.</li>
+            </ul>
+        </section>
+        <section id="recoverability">
+            <h2>Schedules based on Recoverability</h2>
+            <Center>
+            <img src="RCS.webp" height="200" width="350">
+            </Center>
+            <p>Schedules can be categorized based on whether they allow recovery after failures:</p>
+            <ul>
+                <li><strong>Recoverable Schedule</strong> - A schedule where transactions commit only after ensuring that all dependent transactions commit.</li>
+                <li><strong>Cascadeless Schedule</strong> - A recoverable schedule that avoids cascading rollbacks by ensuring transactions read only committed data.</li>
+                <li><strong>Strict Schedule</strong> - A cascadeless schedule that ensures that once a transaction writes a data item, no other transaction can access it until the first one is committed or rolled back.</li>
+            </ul>
+        </section>
+        <section id="serializability">
+            <h2>Schedules based on Serializability</h2>
+            <Center>
+            <img src="SCV.png" height="200" width="350">
+            </Center>
+            <p>Schedules are categorized based on their equivalence to serial execution:</p>
+            <ul>
+                <li><strong>Serializable Schedule</strong> - A schedule that results in the same outcome as a serial execution of transactions.</li>
+                <li><strong>Conflict Serializability</strong> - A schedule that can be transformed into a serial schedule by swapping non-conflicting operations.</li>
+                <li><strong>View Serializability</strong> - A schedule that produces the same final result as a serial schedule, even if the order of operations differs.</li>
+            </ul>
+        </section>
+    </div>
+    <footer>
+        <p>&copy; 2025 Transaction Processing Concepts. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
